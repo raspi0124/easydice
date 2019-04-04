@@ -1,6 +1,7 @@
 import discord
 import random
 import configparser
+import sys
 config = configparser.ConfigParser()
 config.read('/home/pi/easydice.conf')
 client = discord.Client()
@@ -50,7 +51,14 @@ async def on_message(message):
 			numsurface = int(msg)
 			m = str(random.randint(1, numsurface))
 			await client.send_message(message.channel, m)
-
+		if message.content.startswith("!ed stop"):
+			if useid == "326091178984603669":
+				m = "Stopping process.."
+				await client.send_message(message.channel, m)
+				sys.exit()
+			else:
+				m = "You have no permission to do that!"
+				await client.send_message(message.channel, m)
 
 
 client.run(discord_token)
