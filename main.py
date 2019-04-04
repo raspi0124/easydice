@@ -31,7 +31,7 @@ async def on_message(message):
 			print(splited)
 			numofchoice = splited[0]
 			print(numofchoice)
-			splited = splited.remove(numofchoice)
+			splited = splited.pop(0)
 			print(splited)
 			m = random.sample(list(splited), int(numofchoice))
 			print(random.sample(list(splited), int(numofchoice)))
