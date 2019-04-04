@@ -22,7 +22,10 @@ async def on_message(message):
 	if message.content.startswith("!ed"):
 		print(message.content)
 		if message.content.startswith("!ed help"):
-			m = "Usage: !ed dice [Number of result] Choice1 Choice2 Choice3"
+			m = "Usage: !ed dice [Number of result] Choice1 Choice2 Choice3 (No limit set for number of choice))\n\
+			使い方: !ed dice [結果を何個出すか] 選択肢1 選択肢2 選択肢3 ..etc（選択肢は何個でも大丈夫です)\n\
+			Example: !ed dice 2 Minecraft Wows Netflix → ['Minecraft', 'Netflix']\n\
+			例: !ed dice 1 たいやき 今川焼 おにぎり → ['今川焼']"
 			await client.send_message(message.channel, m)
 		if message.content.startswith("!ed dice"):
 			msg = message.content
