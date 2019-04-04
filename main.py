@@ -18,6 +18,7 @@ async def on_ready():
 	await client.change_presence(game=discord.Game(name='!ed help'))
 @client.event #noqa
 async def on_message(message):
+	userid = message.user.id
 #	if status == "2":
 #		main_server_status = is_page_available(main_server_address)
 	if message.content.startswith("!ed"):
@@ -52,7 +53,7 @@ async def on_message(message):
 			m = str(random.randint(1, numsurface))
 			await client.send_message(message.channel, m)
 		if message.content.startswith("!ed stop"):
-			if useid == "326091178984603669":
+			if userid == "326091178984603669":
 				m = "Stopping process.."
 				await client.send_message(message.channel, m)
 				sys.exit()
