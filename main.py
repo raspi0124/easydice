@@ -32,9 +32,12 @@ async def on_message(message):
 			numofchoice = splited[0]
 			#print(numofchoice)
 			splited.pop(0)
-			print(splited)
-			m = random.sample(list(splited), int(numofchoice))
-			print(random.sample(list(splited), int(numofchoice)))
+			if len(splited) < int(numofchoice):
+				m = "Error. Place specify Number that is less than total number of list"
+			else:
+				print(splited)
+				m = random.sample(list(splited), int(numofchoice))
+				print(random.sample(list(splited), int(numofchoice)))
 			await client.send_message(message.channel, m)
 
 
