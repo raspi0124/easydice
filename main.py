@@ -31,7 +31,7 @@ async def on_message(message):
 			print(splited)
 			numofchoice = splited[0]
 			print(numofchoice)
-			splited.remove("numofchoice")
+			splited = splited.remove(numofchoice)
 			m = random.sample(splited, int(numofchoice))
 			print(random.sample(splited, int(numofchoice)))
 			await client.send_message(message.channel, m)
