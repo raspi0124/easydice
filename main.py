@@ -28,7 +28,9 @@ async def on_message(message):
 			msg = message.content
 			msg.replace("!ed dice ", "")
 			splited = msg.split(" ")
+			print(splited)
 			numofchoice = splited[0]
+			print(numofchoice)
 			splited.remove("numofchoice")
 			m = random.sample(splited, int(numofchoice))
 			print(random.sample(splited, int(numofchoice)))
