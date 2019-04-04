@@ -20,6 +20,7 @@ async def on_message(message):
 #	if status == "2":
 #		main_server_status = is_page_available(main_server_address)
 	if message.content.startswith("!ed"):
+		print(message.content)
 		if message.content.startswith("!ed help"):
 			m = "Usage: !ed dice [Number of result]Choice1 Choice2 Choice3"
 			await client.send_message(message.channel, m)
