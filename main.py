@@ -18,7 +18,7 @@ async def on_ready():
 	await client.change_presence(game=discord.Game(name='!ed help'))
 @client.event #noqa
 async def on_message(message):
-	userid = message.user.id
+	userid = message.author.id
 #	if status == "2":
 #		main_server_status = is_page_available(main_server_address)
 	if message.content.startswith("!ed"):
@@ -60,6 +60,14 @@ async def on_message(message):
 			else:
 				m = "You have no permission to do that!"
 				await client.send_message(message.channel, m)
+		if message.content == "!ed":
+			m = "Usage: !ed random [Number of result] Choice1 Choice2 Choice3 (No limit set for number of choice))\n\
+			使い方: !ed random [結果を何個出すか] 選択肢1 選択肢2 選択肢3 ..etc（選択肢は何個でも大丈夫です)\n\
+			Example: !ed random 2 Minecraft Wows Netflix → ['Minecraft', 'Netflix']\n\
+			例: !ed random 1 たいやき 今川焼 おにぎり → ['今川焼']\n\
+			!ed dice [Number of surface on dice]\n\
+			!ed dice [面の数]"
+			await client.send_message(message.channel, m)
 
 
 client.run(discord_token)
