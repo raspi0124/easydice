@@ -3,7 +3,7 @@ import random
 import configparser
 import sys
 config = configparser.ConfigParser()
-config.read('/home/pi/easydice.conf')
+config.read('../easydice.conf')
 client = discord.Client()
 section1 = 'production'
 #status defines if its main server or backup server. Main server: 1, Sub server: 2 and 3
@@ -24,12 +24,17 @@ async def on_message(message):
 	if message.content.startswith("!ed"):
 		print(message.content)
 		if message.content.startswith("!ed help"):
-			m = "Usage: !ed random [Number of result] Choice1 Choice2 Choice3 (No limit set for number of choice))\n\
-			使い方: !ed random [結果を何個出すか] 選択肢1 選択肢2 選択肢3 ..etc（選択肢は何個でも大丈夫です)\n\
+			m = "Random command: Usage: !ed random [Number of result] Choice1 Choice2 Choice3 (No limit set for number of choice))\n\
 			Example: !ed random 2 Minecraft Wows Netflix → ['Minecraft', 'Netflix']\n\
-			例: !ed random 1 たいやき 今川焼 おにぎり → ['今川焼']\n\
-			!ed dice [Number of surface on dice]\n\
-			!ed dice [面の数]"
+			Dice thing: Usage: !ed dice [Number of surface on dice]\n\
+			Example: !ed dice 6 → 1\n\
+			!ed help ja で日本語のヘルプも出せます。"
+			await client.send_message(message.channel, m)
+		if message.content.startswith("!ed help ja"):
+			m = "使い方: ルーレット的なやつ: !ed random [結果を何個出すか] 選択肢1 選択肢2 選択肢3 ..etc（選択肢は何個でも大丈夫です)\n\
+さいころみたいなやつ: !ed dice [面の数]\n\
+例: ルーレットみたいなやつ: !ed random 1 たいやき 今川焼 おにぎり → ['今川焼']\n\
+さいころみたいなやつ: !ed dice 6 "
 			await client.send_message(message.channel, m)
 		if message.content.startswith("!ed random"):
 			msg = message.content
@@ -61,12 +66,7 @@ async def on_message(message):
 				m = "You have no permission to do that!"
 				await client.send_message(message.channel, m)
 		if message.content == "!ed":
-			m = "Usage: !ed random [Number of result] Choice1 Choice2 Choice3 (No limit set for number of choice))\n\
-			使い方: !ed random [結果を何個出すか] 選択肢1 選択肢2 選択肢3 ..etc（選択肢は何個でも大丈夫です)\n\
-			Example: !ed random 2 Minecraft Wows Netflix → ['Minecraft', 'Netflix']\n\
-			例: !ed random 1 たいやき 今川焼 おにぎり → ['今川焼']\n\
-			!ed dice [Number of surface on dice]\n\
-			!ed dice [面の数]"
+			m = "Type !ed help for help. !ed help ja で日本語のhelpも出せます。"
 			await client.send_message(message.channel, m)
 
 
